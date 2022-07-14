@@ -1,7 +1,7 @@
 ## Copyright (c) 2022, Oracle and/or its affiliates.
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
-output "predefined-tags" {
+output "predefined_tags" {
   value       = local.tag_expression
   description = "The default generated tags"
 }
