@@ -7,30 +7,29 @@ resource "random_id" "tag" {
 
 resource "oci_identity_tag_namespace" "architecture_center_tag_namespace" {
   compartment_id = var.compartment_ocid
-  name           = "ArchitectureCenter\\${var.tag_namespace}-${local.random_value}"
+  name           = "ArchitectureCenter\\${var.tag_namespace}_${local.random_value}"
   description    = "ArchitectureCenter\\${var.tag_namespace}-${local.random_value}"
   freeform_tags  = local.implementation_module
 
-  #provisioner "local-exec" {
-  #  command = "sleep 10"
-  #}
+  provisioner "local-exec" {
+    command = "sleep 10"
+  }
 
 }
 
 resource "oci_identity_tag" "architecture_center_tag" {
-  name             = "ArchitectureCenter\\${var.tag_namespace}-${local.random_value}release"
-  description      = "ArchitectureCenter\\${var.tag_namespace}-${local.random_value} release value"
+  name             = "release"
+  description      = "release tag in namespace ${oci_identity_tag_namespace.architecture_center_tag_namespace.name}"
   tag_namespace_id = oci_identity_tag_namespace.architecture_center_tag_namespace.id
   freeform_tags    = local.implementation_module
-
   validator {
     validator_type = "ENUM"
     values         = ["release", "${var.release}"]
   }
 
-  #provisioner "local-exec" {
-  #  command = "sleep 120"
-  #}
+  provisioner "local-exec" {
+    command = "sleep 120"
+  }
 }
 
 locals {
