@@ -7,7 +7,7 @@ variable "tag_namespace" {
   nullable    = false
   description = "This is the name of this Reference Architecture e.g. cloud-native-mysql-oci"
   validation {
-    condition     = var.tag_namespace != null && length(var.tag_namespace) >= 3
+    condition     = length(var.tag_namespace) >= 3
     error_message = "The std tags namespace number MUST be set"
 
   }
@@ -26,4 +26,8 @@ variable "release" {
   }
 }
 
-
+variable "compartment_ocid" {
+  type        = string
+  nullable    = false
+  description = "The OCID of the compartment to have the tag created in"
+}
