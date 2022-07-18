@@ -13,6 +13,12 @@ variable "tag_namespace" {
   }
 }
 
+variable "random_id" {
+  type        = string
+  description = "a random string to avoid name conflicts e.g. the output of random_id.tag.hex. If not provided / null the module will provide one. Note a blank string"
+  default     = null
+  nullable    = true
+}
 
 variable "release" {
   type        = string
