@@ -12,7 +12,6 @@ The use of this module is deliberately as simple as possible. The module can be 
 module "tags" {
   source           = "github.com/oracle-devrel/terraform-oci-arch-tags"
   tag_namespace    = "terraform-oci-arch-test-name"
-  tenancy_ocid     = var.tenanct_ocid
   compartment_ocid = var.compartment_ocid
 }
 ```
@@ -24,13 +23,26 @@ defined_tags = tags.predefined-tags
 ```
 
 
+Taking complete control works with the following example:
+
+```
+module "tags_manual" {
+  source           = "github.com/oracle-devrel/terraform-oci-arch-tags"
+  tag_namespace    = "terraform-oci-arch-test-name-manual"
+  compartment_ocid = var.compartment_ocid
+  release          = "1.5"
+  random_id        = "PW25"
+}
+```
 
 ### Prerequisites
 
 Terraform
 
 ## Notes
-
+Examples of using the module are provided:
+- auto-set-random-id -- folder illustrates allowing the module to apply the random_id value  (the recommended pattern)
+- manual-set-random-id -- folder illustrates how the manual random-id can be forced.
 ### Inputs
 
 The module  uses the following inputs:
@@ -39,6 +51,7 @@ The module  uses the following inputs:
 | ------------- | ------------------------------------------------------------ |
 | tag_namespace | The namespace to be used within the tag e.g. "test-namespace" |
 | release       | If this isn't provided then the value is set to 1.0.  It can not have a null value. |
+| random_id | Optionally supply the random Id. If not provided then a locally calculated value will be provided. The value used will be available in the output|
 
 ### Outputs
 
