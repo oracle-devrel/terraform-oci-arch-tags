@@ -26,7 +26,11 @@ resource "oci_identity_tag" "architecture_center_tag" {
     validator_type = "ENUM"
     values         = ["release", "${var.release}"]
   }
+  # NOTE: the name and the values attribute name in the vaidator must line up
 
+  #provisioner "local-exec" {
+  #  command = "echo 'architecture center tag provisioner ---------------'"
+  #}
   provisioner "local-exec" {
     command = "sleep 120"
   }
