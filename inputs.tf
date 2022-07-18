@@ -19,7 +19,6 @@ variable "release" {
   nullable    = false
   default     = "1.0"
   description = "Reference Architecture Release (OCI Architecture Center)"
-  # TODO: incorporate logic that can derive this from GitHub directly
   validation {
     condition     = length(var.release) >= 3
     error_message = "The std tags release number MUST be set"
