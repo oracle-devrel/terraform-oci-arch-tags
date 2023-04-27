@@ -8,7 +8,7 @@ variable "tag_namespace" {
   description = "This is the name of this Reference Architecture e.g. cloud-native-mysql-oci"
   validation {
     condition     = length(var.tag_namespace) >= 3
-    error_message = "The std tags namespace number MUST be set"
+    error_message = "The std tags namespace number MUST be set."
 
   }
 }
@@ -27,7 +27,7 @@ variable "release" {
   description = "Reference Architecture Release (OCI Architecture Center)"
   validation {
     condition     = length(var.release) >= 3
-    error_message = "The std tags release number MUST be set"
+    error_message = "The std tags release number MUST be set."
   }
 }
 
